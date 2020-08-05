@@ -1,9 +1,7 @@
-# Agones client for Godot
-** Unfortunately I could not overcome an issue with newer agonessdk libs having non-PIC code :(
-Leaving this up even though it doesn't work.
+# Godot plugin for Agones
 
-## Clone
-`git clone https://github.com/exitdoorgames/godot-agones.git`
+## Clone with submodules
+`git clone --recurse-submodules https://github.com/exitdoorgames/godot-agones.git`
 
 ## Compile
 

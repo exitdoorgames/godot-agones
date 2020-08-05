@@ -13,8 +13,8 @@ def add_sources(sources, directory):
     for file in os.listdir(directory):
         if file.endswith('.cpp'):
             sources.append(directory + '/' + file)
-env.Append(CPPPATH=['.', 'src/', 'godot-cpp/include', 'godot-cpp/include/core', 'godot-cpp/godot_headers', 'godot-cpp/include/gen', 'agones/include', 'agones/include/agones', 'Protobuf/include', 'gRPC/include'])
-env.Append(LIBPATH=['godot-cpp/bin', 'agones/lib', 'c-ares/lib', 'gRPC/lib', 'Protobuf/lib', 'zlib/lib'])
+env.Append(CPPPATH=['.', 'src/', 'godot-cpp/include', 'godot-cpp/include/core', 'godot-cpp/godot_headers', 'godot-cpp/include/gen', 'agones/include', 'Protobuf/include', 'gRPC/include'])
+env.Append(LIBPATH=['godot-cpp/bin', 'agones/lib', 'c-ares/lib', 'grpc/lib', 'protobuf/lib', 'zlib/lib'])
 env.Append(LIBS=['libgodot-cpp.linux.release.64', 'agones', 'grpc++', 'grpc',  'protobuf', 'z', 'gpr', 'address_sorting', 'cares'])
 
 sources = []
