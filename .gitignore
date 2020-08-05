@@ -3,7 +3,6 @@
 .import/
 include/
 example/export/
-agones/
 
 *.os
 *.o
