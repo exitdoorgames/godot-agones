@@ -13,9 +13,21 @@ def add_sources(sources, directory):
     for file in os.listdir(directory):
         if file.endswith('.cpp'):
             sources.append(directory + '/' + file)
-env.Append(CPPPATH=['.', 'src/', 'godot-cpp/include', 'godot-cpp/include/core', 'godot-cpp/godot_headers', 'godot-cpp/include/gen', 'agones/include', 'Protobuf/include', 'gRPC/include'])
-env.Append(LIBPATH=['godot-cpp/bin', 'agones/lib', 'c-ares/lib', 'grpc/lib', 'protobuf/lib', 'zlib/lib'])
-env.Append(LIBS=['libgodot-cpp.linux.release.64', 'agones', 'grpc++', 'grpc',  'protobuf', 'z', 'gpr', 'address_sorting', 'cares'])
+agones_path = 'agones/sdks/cpp/.build/'
+env.Append(CPPPATH=[
+    '.',
+    'src/',
+    agones_path,
+    agones_path+'gRPC/src/include',
+    agones_path+'.install/Protobuf/include/',
+    'agones/sdks/cpp/include',
+    'godot-cpp/godot_headers/',
+    'godot-cpp/include/',
+    'godot-cpp/include/core/',
+    'godot-cpp/include/gen/'
+    ])
+env.Append(LIBPATH=['godot-cpp/bin'] + [agones_path+lib for lib in ['', 'gRPC/.bin/', 'Protobuf/.bin/', 'zlib/.bin/', 'c-ares/.bin/lib/']])
+env.Append(LIBS=['libgodot-cpp.linux.release.64'] + ['agones', 'grpc++', 'grpc',  'protobuf', 'z', 'gpr', 'address_sorting', 'cares'])
 
 sources = []
 add_sources(sources, 'src')
