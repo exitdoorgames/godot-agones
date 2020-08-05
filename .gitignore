@@ -3,9 +3,11 @@
 .import/
 include/
 example/export/
+agones/
 
 *.os
 *.o
 *.so
 *.so.*
 *.a
+*.dylib
