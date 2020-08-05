@@ -3,4 +3,4 @@
 	url = https://github.com/GodotNativeTools/godot-cpp
 [submodule "agones"]
 	path = agones
-	url = https://github.com/googleforgames/agones.git
+	url = https://github.com/exitdoorgames/agones.git
