@@ -12,9 +12,9 @@
 
 namespace godot
 {
-    class Agones : public godot::GodotScript<Reference>
+    class Agones : public Reference
     {
-        GODOT_CLASS(Agones)
+        GODOT_CLASS(Agones, Reference)
 
     private:
         std::unique_ptr<agones::SDK> sdk;

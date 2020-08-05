@@ -26,7 +26,7 @@ bool Agones::Health()
 
 godot::Dictionary Agones::GameServer()
 {
-    sdk::GameServer gameServer;
+    agones::dev::sdk::GameServer gameServer;
     const auto& status = sdk->GameServer(&gameServer);
     log_error(status);
     return game_server_to_dict(gameServer);

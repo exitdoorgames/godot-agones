@@ -3,7 +3,7 @@
 
 #include "agones.h"
 
-using namespace stable::agones::dev;
+using namespace agones;
 
 inline std::string to_std(const godot::String& s)
 {
@@ -24,7 +24,7 @@ inline void log_error(const grpc::Status& status)
     }
 }
 
-godot::Dictionary object_meta_to_dict(const sdk::GameServer_ObjectMeta& object_meta)
+godot::Dictionary object_meta_to_dict(const agones::dev::sdk::GameServer_ObjectMeta& object_meta)
 {
     godot::Dictionary result, annotations, labels;
     result["name"] = to_godot(object_meta.name());
@@ -47,18 +47,18 @@ godot::Dictionary object_meta_to_dict(const sdk::GameServer_ObjectMeta& object_m
     return result;
 }
 
-godot::Dictionary spec_to_dict(const sdk::GameServer_Spec& spec)
+godot::Dictionary spec_to_dict(const agones::dev::sdk::GameServer_Spec& spec)
 {
     godot::Dictionary result, health;
     health["disabled"] = spec.health().disabled();
-    health["periodseconds"] = spec.health().periodseconds();
-    health["failurethreshold"] = spec.health().failurethreshold();
-    health["initialdelayseconds"] = spec.health().initialdelayseconds();
+    health["periodseconds"] = spec.health().period_seconds();
+    health["failurethreshold"] = spec.health().failure_threshold();
+    health["initialdelayseconds"] = spec.health().initial_delay_seconds();
     result["health"] = health;
     return result;
 }
 
-godot::Dictionary status_to_dict(const sdk::GameServer_Status& status)
+godot::Dictionary status_to_dict(const agones::dev::sdk::GameServer_Status& status)
 {
     godot::Dictionary result, ports;
     result["state"] = to_godot(status.state());
@@ -71,7 +71,7 @@ godot::Dictionary status_to_dict(const sdk::GameServer_Status& status)
     return result;
 }
 
-godot::Dictionary game_server_to_dict(const sdk::GameServer& gameServer)
+godot::Dictionary game_server_to_dict(const agones::dev::sdk::GameServer& gameServer)
 {
     godot::Dictionary result;
     result["object_meta"] = object_meta_to_dict(gameServer.object_meta());
